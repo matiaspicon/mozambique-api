@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import sqlite3
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -23,8 +24,8 @@ def inventory():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    cursor.execute("INSERT INTO inventory (user_id, barcode, invoice_number, supplier_id, n_units) VALUES (?, ?, ?, ?, ?)",
-                (user_id, barcode, invoice_number, supplier_id, n_units))
+    cursor.execute("INSERT INTO inventory (user_id, barcode, invoice_number, supplier_id, n_units, timestamp) VALUES (?, ?, ?, ?, ?, ?)",
+                (user_id, barcode, invoice_number, supplier_id, n_units, datetime.now()))
 
     conn.commit()
     conn.close()
@@ -50,8 +51,8 @@ def sales():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    cursor.execute("INSERT INTO sales (user_id, barcode, customer_name, customer_phone_number, price, n_units) VALUES (?, ?, ?, ?, ?, ?)",
-                (user_id, barcode, customer_name, customer_phone_number, price, n_units))
+    cursor.execute("INSERT INTO sales (user_id, barcode, customer_name, customer_phone_number, price, n_units, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (user_id, barcode, customer_name, customer_phone_number, price, n_units, datetime.now()))
 
     conn.commit()
     conn.close()

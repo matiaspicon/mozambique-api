@@ -12,7 +12,8 @@ cursor.execute('''
         barcode INTEGER NOT NULL,
         invoice_number TEXT NOT NULL,
         supplier_id INTEGER NOT NULL,
-        n_units INTEGER NOT NULL
+        n_units INTEGER NOT NULL,
+        timestamp TEXT NOT NULL
     )
 ''')
 
@@ -24,7 +25,8 @@ cursor.execute('''
         customer_name TEXT NOT NULL,
         customer_phone_number TEXT NOT NULL,
         price FLOAT NOT NULL,
-        n_units INTEGER NOT NULL
+        n_units INTEGER NOT NULL,
+        timestamp TEXT NOT NULL
     )
 ''')
 
